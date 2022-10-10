@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:NoteOrganizer.Views;assembly=NoteOrganizer.Views"
         mc:Ignorable="d"
+        Background="#141416"
         Title="MainWindow" Height="1000" Width="1600">
-  <ScrollViewer Background="DarkSlateGray">
-    <views:SchedulerWeekView DataContext="{Binding SchedulerWeekViewModel}" />
-  </ScrollViewer>
+  <views:SchedulerWeekView DataContext="{Binding SchedulerWeekViewModel}" />
 </Window>

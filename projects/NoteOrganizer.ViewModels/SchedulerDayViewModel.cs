@@ -8,10 +8,8 @@ namespace NoteOrganizer.ViewModels
   {
     private readonly IMeetingViewModelWrapper meetingViewModelWrapper;
 
-    public SchedulerDayViewModel(string dayOfMonth, string weekday, IMeetingViewModelWrapper meetingViewModelWrapper)
+    public SchedulerDayViewModel(IMeetingViewModelWrapper meetingViewModelWrapper)
     {
-      DayOfMonth = dayOfMonth;
-      Weekday = weekday;
       this.meetingViewModelWrapper = meetingViewModelWrapper;
       meetingViewModelWrapper.PropertyChanged += MeetingViewModelWrapper_PropertyChanged;
     }
@@ -23,8 +21,6 @@ namespace NoteOrganizer.ViewModels
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    public string DayOfMonth { get; }
     public List<IMeetingViewModel> MeetingViewModels => meetingViewModelWrapper.MeetingViewModels;
-    public string Weekday { get; }
   }
 }

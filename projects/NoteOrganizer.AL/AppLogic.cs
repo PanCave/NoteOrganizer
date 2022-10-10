@@ -23,13 +23,24 @@ namespace NoteOrganizer.AL
       IMeetingViewModelWrapper thursdayMeetingViewModelWrapper = new MeetingViewModelWrapper(thursdayMeetings);
       IMeetingViewModelWrapper fridayMeetingViewModelWrapper = new MeetingViewModelWrapper(fridayMeetings);
 
-      ISchedulerDayViewModel mondayViewModel = new SchedulerDayViewModel("10", "Montag", mondayMeetingViewModelWrapper);
-      ISchedulerDayViewModel tuesdayViewModel = new SchedulerDayViewModel("11", "Dienstag", tuesdayMeetingViewModelWrapper);
-      ISchedulerDayViewModel wednesdayViewModel = new SchedulerDayViewModel("12", "Mittwoch", wednesdayMeetingViewModelWrapper);
-      ISchedulerDayViewModel thursdayViewModel = new SchedulerDayViewModel("13", "Donnerstag", thursdayMeetingViewModelWrapper);
-      ISchedulerDayViewModel fridayViewModel = new SchedulerDayViewModel("14", "Freitag", fridayMeetingViewModelWrapper);
+      ISchedulerDayHeaderViewModel mondayHeaderViewModel = new SchedulerDayHeaderViewModel("10", "Montag");
+      ISchedulerDayHeaderViewModel tuesdayHeaderViewModel = new SchedulerDayHeaderViewModel("11", "Dienstag");
+      ISchedulerDayHeaderViewModel wednesdayHeaderViewModel = new SchedulerDayHeaderViewModel("12", "Mittwoch");
+      ISchedulerDayHeaderViewModel thursdayHeaderViewModel = new SchedulerDayHeaderViewModel("13", "Donnerstag");
+      ISchedulerDayHeaderViewModel fridayHeaderViewModel = new SchedulerDayHeaderViewModel("14", "Freitag");
+
+      ISchedulerDayViewModel mondayViewModel = new SchedulerDayViewModel(mondayMeetingViewModelWrapper);
+      ISchedulerDayViewModel tuesdayViewModel = new SchedulerDayViewModel(tuesdayMeetingViewModelWrapper);
+      ISchedulerDayViewModel wednesdayViewModel = new SchedulerDayViewModel(wednesdayMeetingViewModelWrapper);
+      ISchedulerDayViewModel thursdayViewModel = new SchedulerDayViewModel(thursdayMeetingViewModelWrapper);
+      ISchedulerDayViewModel fridayViewModel = new SchedulerDayViewModel(fridayMeetingViewModelWrapper);
 
       ISchedulerWeekViewModel schedulerWeekViewModel = new SchedulerWeekViewModel(
+        mondayHeaderViewModel,
+        tuesdayHeaderViewModel,
+        wednesdayHeaderViewModel,
+        thursdayHeaderViewModel,
+        fridayHeaderViewModel,
         mondayViewModel,
         tuesdayViewModel,
         wednesdayViewModel,

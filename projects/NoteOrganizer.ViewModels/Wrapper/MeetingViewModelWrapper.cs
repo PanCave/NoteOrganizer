@@ -26,6 +26,7 @@ namespace NoteOrganizer.ViewModels.Wrapper
 
     private IMeetingViewModel ConvertToMeetingViewModel(IMeeting meeting, TimeOnly lastEndTime)
     {
+#pragma warning disable CS8605 // Unboxing eines möglichen NULL-Werts.
       return new MeetingViewModel(
             meeting.Title,
             $"{meeting.StartTime:HH':'mm} - {meeting.EndTime:HH':'mm' Uhr'}",
@@ -35,11 +36,12 @@ namespace NoteOrganizer.ViewModels.Wrapper
             (Color)colorValues.GetValue(random.Next(colorValues.Length)),
             (Color)colorValues.GetValue(random.Next(colorValues.Length)),
             (Color)colorValues.GetValue(random.Next(colorValues.Length)));
+#pragma warning restore CS8605 // Unboxing eines möglichen NULL-Werts.
     }
 
     private void CreateViewModelsFromMeetingsCollection()
     {
-      TimeOnly lastEndTime = meetings.First().StartTime;
+      TimeOnly lastEndTime = TimeOnly.MinValue;
       foreach (IMeeting meeting in meetings)
       {
         MeetingViewModels.Add(ConvertToMeetingViewModel(meeting, lastEndTime));

@@ -5,9 +5,11 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\NoteOrganizer.AL\NoteOrganizer.AL.csproj" />
     <ProjectReference Include="..\NoteOrganizer.Views\NoteOrganizer.Views.csproj" />
   </ItemGroup>
 

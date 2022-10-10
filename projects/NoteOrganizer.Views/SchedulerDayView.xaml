@@ -3,19 +3,46 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converter="clr-namespace:NoteOrganizer.Views.Converter"
              mc:Ignorable="d"
-             d:DesignHeight="450" d:DesignWidth="200">
+             d:DesignHeight="1450" d:DesignWidth="200">
+  <UserControl.Resources>
+    <ResourceDictionary>
+      <converter:IntToMarginTopConverter x:Key="IntToMarginTopConverter" />
+      <converter:ColorToSolidBrushConverter x:Key="ColorSolidBrushConverter" />
+      <DataTemplate x:Key="MeetingTemplate">
+        <Border BorderBrush="{Binding BorderColor, Converter={StaticResource ColorSolidBrushConverter}}" BorderThickness="5 0 0 0" CornerRadius="3 0 0 3" Height="{Binding Height}" Padding="0 0 10 0" Margin="{Binding Margin, Converter={StaticResource IntToMarginTopConverter}}">
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Text="{Binding Title}" Padding="5" FontSize="14" FontWeight="Bold" Foreground="White" />
+            <TextBlock Text="{Binding Time}" Padding="5 25 5 5" FontSize="12" Foreground="White" />
+            <Grid.Style>
+              <Style TargetType="{x:Type Grid}">
+                <Setter Property="Background" Value="{Binding BackgroundColor, Converter={StaticResource ColorSolidBrushConverter}}" />
+                <Style.Triggers>
+                  <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{Binding MouseOverBackgroundColor, Converter={StaticResource ColorSolidBrushConverter}}" />
+                  </Trigger>
+                </Style.Triggers>
+              </Style>
+            </Grid.Style>
+          </Grid>
+        </Border>
+      </DataTemplate>
+    </ResourceDictionary>
+  </UserControl.Resources>
   <Grid>
     <Grid.RowDefinitions>
       <RowDefinition Height="35" />
       <RowDefinition Height="30" />
       <RowDefinition />
     </Grid.RowDefinitions>
-    <Image Height="10" Source="https://upload.wikimedia.org/wikipedia/commons/3/30/Googlelogo.png" />
-    <Label Content="20" FontWeight="Bold" FontSize="20" />
-    <Label Content="Dienstag" Grid.Row="1" />
-    <ItemsControl ItemsSource="{Binding Meetings}" Grid.Row="2">
-      <Border BorderBrush="DodgerBlue" BorderThickness="5 0 0 0" CornerRadius="3 0 0 3" Height="200">
+    <Label Content="{Binding DayOfMonth}" Foreground="White" FontWeight="Bold" FontSize="20" />
+    <Label Content="{Binding Weekday}" Foreground="White" Grid.Row="1" />
+    <ItemsControl ItemsSource="{Binding MeetingViewModels}" Grid.Row="2" ItemTemplate="{StaticResource MeetingTemplate}">
+      <!--<Border BorderBrush="DodgerBlue" BorderThickness="5 0 0 0" CornerRadius="3 0 0 3" Height="200">
         <Grid>
           <Grid.RowDefinitions>
             <RowDefinition />
@@ -34,6 +61,25 @@
           </Grid.Style>
         </Grid>
       </Border>
+      <Border BorderBrush="DodgerBlue" BorderThickness="5 0 0 0" CornerRadius="3 0 0 3" Height="200" Margin="0 10 0 0">
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition />
+          </Grid.RowDefinitions>
+          <TextBlock Text="Energieberater Daily" Padding="5" FontSize="14" FontWeight="Bold" />
+          <TextBlock Text="10:30 - 10:45 Uhr" Padding="5 25 5 5" FontSize="12" />
+          <Grid.Style>
+            <Style TargetType="{x:Type Grid}">
+              <Setter Property="Background" Value="AliceBlue" />
+              <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                  <Setter Property="Background" Value="#336bb9f0" />
+                </Trigger>
+              </Style.Triggers>
+            </Style>
+          </Grid.Style>
+        </Grid>
+      </Border>-->
     </ItemsControl>
   </Grid>
 </UserControl>

@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:view="clr-namespace:NoteOrganizer.Views"
              mc:Ignorable="d"
-             d:DesignHeight="450" d:DesignWidth="1000">
+             d:DesignHeight="1450" d:DesignWidth="1000">
   <Grid>
     <Grid.ColumnDefinitions>
       <ColumnDefinition />
@@ -14,6 +14,10 @@
       <ColumnDefinition />
       <ColumnDefinition />
     </Grid.ColumnDefinitions>
-    <view:SchedulerDayView Grid.Column="0" />
+    <view:SchedulerDayView Grid.Column="0" DataContext="{Binding MondayViewModel}" />
+    <view:SchedulerDayView Grid.Column="1" DataContext="{Binding TuesdayViewModel}" />
+    <view:SchedulerDayView Grid.Column="2" DataContext="{Binding WednesdayViewModel}" />
+    <view:SchedulerDayView Grid.Column="3" DataContext="{Binding ThursdayViewModel}" />
+    <view:SchedulerDayView Grid.Column="4" DataContext="{Binding FridayViewModel}" />
   </Grid>
 </UserControl>

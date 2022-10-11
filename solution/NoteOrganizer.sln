@@ -7,11 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoteOrganizer", "..\project
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoteOrganizer.Views", "..\projects\NoteOrganizer.Views\NoteOrganizer.Views.csproj", "{464C6159-FE96-40AB-BFAB-ECA2A7E190D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteOrganizer.ViewModels", "..\projects\NoteOrganizer.ViewModels\NoteOrganizer.ViewModels.csproj", "{35500586-24ED-4E8C-B511-A7D795BD5080}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoteOrganizer.ViewModels", "..\projects\NoteOrganizer.ViewModels\NoteOrganizer.ViewModels.csproj", "{35500586-24ED-4E8C-B511-A7D795BD5080}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteOrganizer.BL", "..\projects\NoteOrganizer.BL\NoteOrganizer.BL.csproj", "{20F86CF3-3D84-4E7C-A20A-ED585ECFBDDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoteOrganizer.BL", "..\projects\NoteOrganizer.BL\NoteOrganizer.BL.csproj", "{20F86CF3-3D84-4E7C-A20A-ED585ECFBDDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteOrganizer.AL", "..\projects\NoteOrganizer.AL\NoteOrganizer.AL.csproj", "{F3557165-0AF4-4729-A0ED-9BAF90FD995D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoteOrganizer.AL", "..\projects\NoteOrganizer.AL\NoteOrganizer.AL.csproj", "{F3557165-0AF4-4729-A0ED-9BAF90FD995D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteOrganizer.Persistence.Outlook", "..\projects\NoteOrganizer.Persistence.Outlook\NoteOrganizer.Persistence.Outlook.csproj", "{E4BF31E5-6A8E-4EC5-922F-FAC21D006305}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteOrganizer.Persistence.Interfaces", "..\projects\NoteOrganizer.Persistence.Interfaces\NoteOrganizer.Persistence.Interfaces.csproj", "{1FC1FB39-05BF-422F-A135-B52BA49FA344}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +65,22 @@ Global
 		{F3557165-0AF4-4729-A0ED-9BAF90FD995D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F3557165-0AF4-4729-A0ED-9BAF90FD995D}.Release|x64.ActiveCfg = Release|Any CPU
 		{F3557165-0AF4-4729-A0ED-9BAF90FD995D}.Release|x64.Build.0 = Release|Any CPU
+		{E4BF31E5-6A8E-4EC5-922F-FAC21D006305}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4BF31E5-6A8E-4EC5-922F-FAC21D006305}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4BF31E5-6A8E-4EC5-922F-FAC21D006305}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E4BF31E5-6A8E-4EC5-922F-FAC21D006305}.Debug|x64.Build.0 = Debug|Any CPU
+		{E4BF31E5-6A8E-4EC5-922F-FAC21D006305}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4BF31E5-6A8E-4EC5-922F-FAC21D006305}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4BF31E5-6A8E-4EC5-922F-FAC21D006305}.Release|x64.ActiveCfg = Release|Any CPU
+		{E4BF31E5-6A8E-4EC5-922F-FAC21D006305}.Release|x64.Build.0 = Release|Any CPU
+		{1FC1FB39-05BF-422F-A135-B52BA49FA344}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FC1FB39-05BF-422F-A135-B52BA49FA344}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FC1FB39-05BF-422F-A135-B52BA49FA344}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1FC1FB39-05BF-422F-A135-B52BA49FA344}.Debug|x64.Build.0 = Debug|Any CPU
+		{1FC1FB39-05BF-422F-A135-B52BA49FA344}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FC1FB39-05BF-422F-A135-B52BA49FA344}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FC1FB39-05BF-422F-A135-B52BA49FA344}.Release|x64.ActiveCfg = Release|Any CPU
+		{1FC1FB39-05BF-422F-A135-B52BA49FA344}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

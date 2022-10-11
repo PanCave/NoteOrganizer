@@ -1,5 +1,9 @@
-﻿using NoteOrganizer.BL.BO;
+﻿using NoteOrganizer.BL;
 using NoteOrganizer.BL.BO.Interfaces;
+using NoteOrganizer.BL.Interfaces;
+using NoteOrganizer.Persistence.Interfaces;
+using NoteOrganizer.Persistence.Outlook;
+using NoteOrganizer.Persistence.Outlook.Interfaces;
 using NoteOrganizer.ViewModels;
 using NoteOrganizer.ViewModels.Interfaces;
 using NoteOrganizer.ViewModels.Wrapper;
@@ -12,11 +16,24 @@ namespace NoteOrganizer.AL
   {
     public AppLogic()
     {
-      ObservableCollection<IMeeting> mondayMeetings = new ObservableCollection<IMeeting>();
-      ObservableCollection<IMeeting> tuesdayMeetings = new ObservableCollection<IMeeting>();
-      ObservableCollection<IMeeting> wednesdayMeetings = new ObservableCollection<IMeeting>();
-      ObservableCollection<IMeeting> thursdayMeetings = new ObservableCollection<IMeeting>();
-      ObservableCollection<IMeeting> fridayMeetings = new ObservableCollection<IMeeting>();
+      DateOnly today = DateOnly.FromDateTime(DateTime.Now);
+      DayOfWeek dayOfWeek = today.DayOfWeek;
+      DateOnly startOfWeekTwoWeeksAgo = today.AddDays(1 - (int)dayOfWeek - 14);
+      DateOnly endOfWeekFourWeekFromNow = today.AddDays((5 - (int)dayOfWeek) + 28);
+
+      IAppointmentItemToMeetingConverter appointmentItemToMeetingConverter = new AppointmentItemToMeetingConverter();
+      IMeetingsLoader outlookMeetingsLoader = new OutlookMeetingLoader(appointmentItemToMeetingConverter);
+      Dictionary<DateOnly, List<IMeeting>> meetingsDictionary = outlookMeetingsLoader.LoadMeetings(startOfWeekTwoWeeksAgo, endOfWeekFourWeekFromNow);
+
+      ICalendar calendar = new Calendar();
+      calendar.AddMeetingsfromDictionary(meetingsDictionary);
+
+      ObservableCollection<IMeeting> mondayMeetings = calendar[today.AddDays(1 - (int)dayOfWeek)];
+      ObservableCollection<IMeeting> tuesdayMeetings = calendar[today.AddDays(1 - (int)dayOfWeek + 1)];
+      ObservableCollection<IMeeting> wednesdayMeetings = calendar[today.AddDays(1 - (int)dayOfWeek + 2)];
+      ObservableCollection<IMeeting> thursdayMeetings = calendar[today.AddDays(1 - (int)dayOfWeek + 3)];
+      ObservableCollection<IMeeting> fridayMeetings = calendar[today.AddDays(1 - (int)dayOfWeek + 4)];
+
       IMeetingViewModelWrapper mondayMeetingViewModelWrapper = new MeetingViewModelWrapper(mondayMeetings);
       IMeetingViewModelWrapper tuesdayMeetingViewModelWrapper = new MeetingViewModelWrapper(tuesdayMeetings);
       IMeetingViewModelWrapper wednesdayMeetingViewModelWrapper = new MeetingViewModelWrapper(wednesdayMeetings);

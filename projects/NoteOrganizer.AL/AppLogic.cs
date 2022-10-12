@@ -1,5 +1,4 @@
 ﻿using NoteOrganizer.BL;
-using NoteOrganizer.BL.BO.Interfaces;
 using NoteOrganizer.BL.Interfaces;
 using NoteOrganizer.Persistence.Interfaces;
 using NoteOrganizer.Persistence.Outlook;
@@ -8,7 +7,6 @@ using NoteOrganizer.ViewModels;
 using NoteOrganizer.ViewModels.Interfaces;
 using NoteOrganizer.ViewModels.Wrapper;
 using NoteOrganizer.ViewModels.Wrapper.Interfaces;
-using System.Collections.ObjectModel;
 
 namespace NoteOrganizer.AL
 {
@@ -16,6 +14,8 @@ namespace NoteOrganizer.AL
   {
     public AppLogic()
     {
+      ICalendar calendar = new Calendar();
+
       DateOnly today = DateOnly.FromDateTime(DateTime.Now);
       DayOfWeek dayOfWeek = today.DayOfWeek;
       DateOnly startOfWeekTwoWeeksAgo = today.AddDays(1 - (int)dayOfWeek - 14);
@@ -23,22 +23,13 @@ namespace NoteOrganizer.AL
 
       IAppointmentItemToMeetingConverter appointmentItemToMeetingConverter = new AppointmentItemToMeetingConverter();
       IMeetingsLoader outlookMeetingsLoader = new OutlookMeetingLoader(appointmentItemToMeetingConverter);
-      Dictionary<DateOnly, List<IMeeting>> meetingsDictionary = outlookMeetingsLoader.LoadMeetings(startOfWeekTwoWeeksAgo, endOfWeekFourWeekFromNow);
+      outlookMeetingsLoader.LoadMeetings(startOfWeekTwoWeeksAgo, endOfWeekFourWeekFromNow, calendar);
 
-      ICalendar calendar = new Calendar();
-      calendar.AddMeetingsfromDictionary(meetingsDictionary);
-
-      ObservableCollection<IMeeting> mondayMeetings = calendar[today.AddDays(1 - (int)dayOfWeek)];
-      ObservableCollection<IMeeting> tuesdayMeetings = calendar[today.AddDays(1 - (int)dayOfWeek + 1)];
-      ObservableCollection<IMeeting> wednesdayMeetings = calendar[today.AddDays(1 - (int)dayOfWeek + 2)];
-      ObservableCollection<IMeeting> thursdayMeetings = calendar[today.AddDays(1 - (int)dayOfWeek + 3)];
-      ObservableCollection<IMeeting> fridayMeetings = calendar[today.AddDays(1 - (int)dayOfWeek + 4)];
-
-      IMeetingViewModelWrapper mondayMeetingViewModelWrapper = new MeetingViewModelWrapper(mondayMeetings);
-      IMeetingViewModelWrapper tuesdayMeetingViewModelWrapper = new MeetingViewModelWrapper(tuesdayMeetings);
-      IMeetingViewModelWrapper wednesdayMeetingViewModelWrapper = new MeetingViewModelWrapper(wednesdayMeetings);
-      IMeetingViewModelWrapper thursdayMeetingViewModelWrapper = new MeetingViewModelWrapper(thursdayMeetings);
-      IMeetingViewModelWrapper fridayMeetingViewModelWrapper = new MeetingViewModelWrapper(fridayMeetings);
+      IMeetingViewModelWrapper mondayMeetingViewModelWrapper = new MeetingViewModelWrapper(calendar[today.AddDays(1 - (int)dayOfWeek)]);
+      IMeetingViewModelWrapper tuesdayMeetingViewModelWrapper = new MeetingViewModelWrapper(calendar[today.AddDays(1 - (int)dayOfWeek + 1)]);
+      IMeetingViewModelWrapper wednesdayMeetingViewModelWrapper = new MeetingViewModelWrapper(calendar[today.AddDays(1 - (int)dayOfWeek + 2)]);
+      IMeetingViewModelWrapper thursdayMeetingViewModelWrapper = new MeetingViewModelWrapper(calendar[today.AddDays(1 - (int)dayOfWeek + 3)]);
+      IMeetingViewModelWrapper fridayMeetingViewModelWrapper = new MeetingViewModelWrapper(calendar[today.AddDays(1 - (int)dayOfWeek + 4)]);
 
       ISchedulerDayHeaderViewModel mondayHeaderViewModel = new SchedulerDayHeaderViewModel("10", "Montag");
       ISchedulerDayHeaderViewModel tuesdayHeaderViewModel = new SchedulerDayHeaderViewModel("11", "Dienstag");

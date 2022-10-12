@@ -12,7 +12,7 @@ namespace NoteOrganizer.Views
     {
       InitializeComponent();
       DateTime now = DateTime.Now;
-      ScrollView.ScrollToVerticalOffset(Math.Max(0, now.Hour * 180 + now.Minute - 200));
+      ScrollView.ScrollToVerticalOffset(Math.Min(1600, Math.Max(0, now.Hour * 180 + now.Minute - 180)));
     }
   }
 }

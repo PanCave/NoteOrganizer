@@ -1,9 +1,6 @@
 ﻿using NoteOrganizer.BL.BO.Interfaces;
 using NoteOrganizer.ViewModels.Interfaces;
 using NoteOrganizer.ViewModels.Wrapper.Interfaces;
-using System.Collections;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.ComponentModel;
 
 namespace NoteOrganizer.ViewModels.Wrapper
@@ -11,18 +8,21 @@ namespace NoteOrganizer.ViewModels.Wrapper
   public class MeetingViewModelWrapper : IMeetingViewModelWrapper
   {
     private readonly Array colorValues;
-    private readonly ObservableCollection<IMeeting> meetings;
     private readonly Random random;
+    private readonly ICalendarDay calendarDay;
 
-    public MeetingViewModelWrapper(ObservableCollection<IMeeting> meetings)
+    public MeetingViewModelWrapper(ICalendarDay calendarDay)
     {
-      this.meetings = meetings;
-      meetings.CollectionChanged += Meetings_CollectionChanged;
       MeetingViewModels = new List<IMeetingViewModel>();
       random = new Random();
       colorValues = Enum.GetValues(typeof(Color));
+      this.calendarDay = calendarDay;
       CreateViewModelsFromMeetingsCollection();
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    public List<IMeetingViewModel> MeetingViewModels { get; }
 
     private IMeetingViewModel ConvertToMeetingViewModel(IMeeting meeting, TimeOnly lastEndTime)
     {
@@ -42,45 +42,11 @@ namespace NoteOrganizer.ViewModels.Wrapper
     private void CreateViewModelsFromMeetingsCollection()
     {
       TimeOnly lastEndTime = TimeOnly.MinValue;
-      foreach (IMeeting meeting in meetings)
+      foreach (IMeeting meeting in calendarDay.Meetings)
       {
         MeetingViewModels.Add(ConvertToMeetingViewModel(meeting, lastEndTime));
         lastEndTime = meeting.EndTime;
       }
     }
-
-    private void InsertNewMeetingViewModels(IList? newItems)
-    {
-      throw new NotImplementedException();
-    }
-
-    private void Meetings_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
-    {
-      switch (e.Action)
-      {
-        case NotifyCollectionChangedAction.Add:
-          InsertNewMeetingViewModels(e.NewItems);
-          break;
-
-        case NotifyCollectionChangedAction.Remove:
-          break;
-
-        case NotifyCollectionChangedAction.Replace:
-          break;
-
-        case NotifyCollectionChangedAction.Move:
-          break;
-
-        case NotifyCollectionChangedAction.Reset:
-          break;
-
-        default:
-          break;
-      }
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    public List<IMeetingViewModel> MeetingViewModels { get; }
   }
 }

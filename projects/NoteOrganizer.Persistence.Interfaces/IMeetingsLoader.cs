@@ -1,9 +1,9 @@
-﻿using NoteOrganizer.BL.BO.Interfaces;
+﻿using NoteOrganizer.BL.Interfaces;
 
 namespace NoteOrganizer.Persistence.Interfaces
 {
   public interface IMeetingsLoader
   {
-    Dictionary<DateOnly, List<IMeeting>> LoadMeetings(DateOnly startDate, DateOnly endDate);
+    void LoadMeetings(DateOnly startDate, DateOnly endDate, ICalendar calendar);
   }
 }

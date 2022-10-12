@@ -1,5 +1,6 @@
 ﻿using Microsoft.Office.Interop.Outlook;
 using NoteOrganizer.BL.BO.Interfaces;
+using NoteOrganizer.BL.Interfaces;
 using NoteOrganizer.Persistence.Interfaces;
 using NoteOrganizer.Persistence.Outlook.Interfaces;
 
@@ -18,10 +19,8 @@ namespace NoteOrganizer.Persistence.Outlook
       this.appointmentItemToMeetingConverter = appointmentItemToMeetingConverter;
     }
 
-    public Dictionary<DateOnly, List<IMeeting>> LoadMeetings(DateOnly startDate, DateOnly endDate)
+    public void LoadMeetings(DateOnly startDate, DateOnly endDate, ICalendar calendar)
     {
-      Dictionary<DateOnly, List<IMeeting>> meetingslistDictionary = new Dictionary<DateOnly, List<IMeeting>>();
-
       oApp = new Application();
       mapiNamespace = oApp.GetNamespace("MAPI");
       CalendarFolder = mapiNamespace.GetDefaultFolder(OlDefaultFolders.olFolderCalendar);
@@ -44,7 +43,7 @@ namespace NoteOrganizer.Persistence.Outlook
             {
               recur = rp.GetOccurrence(cur);
               //Console.WriteLine(recur.Subject + " -> " + cur.ToLongDateString());
-              AddAppointmentItemToDictionary(recur, meetingslistDictionary);
+              AddAppointmentItemToCalendar(recur, calendar);
             }
             catch
             { }
@@ -55,41 +54,17 @@ namespace NoteOrganizer.Persistence.Outlook
           DateTime first = startDate.ToDateTime(new TimeOnly(0, 0, 0));
           DateTime last = endDate.ToDateTime(new TimeOnly(23, 59, 59));
           if (item.Start > first && item.Start < last)
-            AddAppointmentItemToDictionary(item, meetingslistDictionary);
+            AddAppointmentItemToCalendar(item, calendar);
           //Console.WriteLine(item.Subject + " -> " + item.Start.ToLongDateString());
         }
       }
-
-      return meetingslistDictionary;
     }
 
-    private void AddAppointmentItemToDictionary(AppointmentItem appointmentItem, Dictionary<DateOnly, List<IMeeting>> dictionary)
+    private void AddAppointmentItemToCalendar(AppointmentItem appointmentItem, ICalendar calendar)
     {
       IMeeting meeting = appointmentItemToMeetingConverter.Convert(appointmentItem);
       DateOnly date = DateOnly.FromDateTime(appointmentItem.Start);
-      if (!dictionary.ContainsKey(date))
-      {
-        List<IMeeting> meetings = new List<IMeeting>();
-        meetings.Add(meeting);
-        dictionary.Add(date, meetings);
-      }
-      else
-      {
-        int i = 0;
-        bool inserted = false;
-        foreach (IMeeting m in dictionary[date])
-        {
-          if (m.StartTime > meeting.StartTime)
-          {
-            dictionary[date].Insert(i, meeting);
-            inserted = true;
-            break;
-          }
-          i++;
-        }
-        if (!inserted)
-          dictionary[date].Add(meeting);
-      }
+      calendar.AddMeeting(meeting, date);
     }
   }
 }

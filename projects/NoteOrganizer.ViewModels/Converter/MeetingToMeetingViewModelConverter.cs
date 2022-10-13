@@ -27,6 +27,7 @@ namespace NoteOrganizer.ViewModels.Converter
       else
         margin = System.Convert.ToInt32(Math.Floor((meeting.StartTime - lastEndTime).TotalMinutes)) * 3;
 
+#pragma warning disable CS8605 // Unboxing eines möglichen NULL-Werts.
       return new MeetingViewModel(
             meeting.Title,
             timeString,
@@ -36,6 +37,7 @@ namespace NoteOrganizer.ViewModels.Converter
             (Color)colorValues.GetValue(random.Next(colorValues.Length)),
             (Color)colorValues.GetValue(random.Next(colorValues.Length)),
             (Color)colorValues.GetValue(random.Next(colorValues.Length)));
+#pragma warning restore CS8605 // Unboxing eines möglichen NULL-Werts.
     }
   }
 }

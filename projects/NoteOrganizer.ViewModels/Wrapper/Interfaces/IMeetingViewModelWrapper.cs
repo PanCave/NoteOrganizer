@@ -1,9 +1,8 @@
 ﻿using NoteOrganizer.ViewModels.Interfaces;
-using System.ComponentModel;
 
 namespace NoteOrganizer.ViewModels.Wrapper.Interfaces
 {
-  public interface IMeetingViewModelWrapper : INotifyPropertyChanged
+  public interface IMeetingViewModelWrapper
   {
     List<IMeetingViewModel> MeetingViewModels { get; }
   }

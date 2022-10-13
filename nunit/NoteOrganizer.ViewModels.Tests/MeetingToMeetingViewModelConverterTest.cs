@@ -10,15 +10,9 @@ namespace NoteOrganizer.ViewModels.Tests
   [TestFixture]
   public class MeetingToMeetingViewModelConverterTest
   {
-    private MockRepository mockRepository;
+    private MockRepository mockRepository = new MockRepository(MockBehavior.Strict);
 
     private TimeOnly lastEndTime;
-
-    [SetUp]
-    public void Setup()
-    {
-      mockRepository = new MockRepository(MockBehavior.Strict);
-    }
 
     [Test]
     public void No_Collission_Meetings_Should_Result_No_Collisions_Test()

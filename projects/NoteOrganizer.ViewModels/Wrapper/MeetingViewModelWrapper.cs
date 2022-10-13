@@ -2,7 +2,6 @@
 using NoteOrganizer.ViewModels.Converter.Interfaces;
 using NoteOrganizer.ViewModels.Interfaces;
 using NoteOrganizer.ViewModels.Wrapper.Interfaces;
-using System.ComponentModel;
 
 namespace NoteOrganizer.ViewModels.Wrapper
 {
@@ -18,8 +17,6 @@ namespace NoteOrganizer.ViewModels.Wrapper
       MeetingViewModels = new List<IMeetingViewModel>();
       CreateViewModelsFromMeetingsCollection();
     }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
 
     public List<IMeetingViewModel> MeetingViewModels { get; }
 

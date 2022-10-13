@@ -13,9 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoteOrganizer.BL", "..\proj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoteOrganizer.AL", "..\projects\NoteOrganizer.AL\NoteOrganizer.AL.csproj", "{F3557165-0AF4-4729-A0ED-9BAF90FD995D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteOrganizer.Persistence.Outlook", "..\projects\NoteOrganizer.Persistence.Outlook\NoteOrganizer.Persistence.Outlook.csproj", "{E4BF31E5-6A8E-4EC5-922F-FAC21D006305}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoteOrganizer.Persistence.Outlook", "..\projects\NoteOrganizer.Persistence.Outlook\NoteOrganizer.Persistence.Outlook.csproj", "{E4BF31E5-6A8E-4EC5-922F-FAC21D006305}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteOrganizer.Persistence.Interfaces", "..\projects\NoteOrganizer.Persistence.Interfaces\NoteOrganizer.Persistence.Interfaces.csproj", "{1FC1FB39-05BF-422F-A135-B52BA49FA344}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoteOrganizer.Persistence.Interfaces", "..\projects\NoteOrganizer.Persistence.Interfaces\NoteOrganizer.Persistence.Interfaces.csproj", "{1FC1FB39-05BF-422F-A135-B52BA49FA344}"
+EndProject
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

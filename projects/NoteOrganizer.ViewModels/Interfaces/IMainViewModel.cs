@@ -3,5 +3,6 @@
   public interface IMainViewModel
   {
     ISchedulerWeekViewModel SchedulerWeekViewModel { get; }
+    ITodoListViewModel TodoListViewModel { get; }
   }
 }

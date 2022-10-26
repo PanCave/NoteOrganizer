@@ -23,7 +23,10 @@ namespace NoteOrganizer.ViewModels.Converter
 
       int margin;
       if (lastEndTime > meeting.StartTime)
-        margin = System.Convert.ToInt32(-Math.Floor((lastEndTime - meeting.StartTime).TotalMinutes)) * 3;
+        if (lastEndTime > meeting.EndTime)
+          margin = System.Convert.ToInt32(-Math.Floor((lastEndTime - (meeting.StartTime.Add(meeting.Duration))).TotalMinutes)) * 3;
+        else
+          margin = System.Convert.ToInt32(-Math.Floor((lastEndTime - meeting.StartTime).TotalMinutes)) * 3;
       else
         margin = System.Convert.ToInt32(Math.Floor((meeting.StartTime - lastEndTime).TotalMinutes)) * 3;
 

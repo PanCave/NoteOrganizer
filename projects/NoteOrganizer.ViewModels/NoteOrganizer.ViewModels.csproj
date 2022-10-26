@@ -11,4 +11,8 @@
     <ProjectReference Include="..\NoteOrganizer.BL\NoteOrganizer.BL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ControlViewModels\" />
+  </ItemGroup>
+
 </Project>

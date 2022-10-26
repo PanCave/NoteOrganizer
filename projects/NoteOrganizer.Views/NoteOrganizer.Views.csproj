@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\NoteOrganizer.Resources\NoteOrganizer.Resources.csproj" />
     <ProjectReference Include="..\NoteOrganizer.ViewModels\NoteOrganizer.ViewModels.csproj" />
   </ItemGroup>
 

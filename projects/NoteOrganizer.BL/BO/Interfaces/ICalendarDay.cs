@@ -2,12 +2,10 @@
 {
   public interface ICalendarDay
   {
-    IMeeting[] Meetings { get; }
-
-    IMeetingCollision[] MeetingsCollisions { get; }
+    void AddMeeting(IMeeting meeting);
 
     DateOnly Date { get; }
-
-    void AddMeeting(IMeeting meeting);
+    IMeeting[] Meetings { get; }
+    IMeetingCollision[] MeetingsCollisions { get; }
   }
 }

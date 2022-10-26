@@ -6,6 +6,9 @@
         xmlns:views="clr-namespace:NoteOrganizer.Views;assembly=NoteOrganizer.Views"
         mc:Ignorable="d"
         Background="#141416"
-        Title="MainWindow" Height="4800" Width="1000">
-  <views:SchedulerWeekView DataContext="{Binding SchedulerWeekViewModel}" />
+        Title="MainWindow" Height="600" Width="400">
+  <Grid>
+    <!--<views:SchedulerWeekView DataContext="{Binding SchedulerWeekViewModel}" />-->
+    <views:TodoListView DataContext="{Binding TodoListViewModel}" />
+  </Grid>
 </Window>

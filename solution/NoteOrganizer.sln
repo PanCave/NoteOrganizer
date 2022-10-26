@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoteOrganizer.Persistence.I
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoteOrganizer.ViewModels.Tests", "..\nunit\NoteOrganizer.ViewModels.Tests\NoteOrganizer.ViewModels.Tests.csproj", "{7CB89498-6B64-488E-89A5-F7E1C9C46429}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteOrganizer.Resources", "..\projects\NoteOrganizer.Resources\NoteOrganizer.Resources.csproj", "{8B88AFEE-AE90-4DEA-BA4D-656EA7E6F74D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,14 @@ Global
 		{7CB89498-6B64-488E-89A5-F7E1C9C46429}.Debug|x64.Build.0 = Debug|x64
 		{7CB89498-6B64-488E-89A5-F7E1C9C46429}.Release|Any CPU.ActiveCfg = Release|x64
 		{7CB89498-6B64-488E-89A5-F7E1C9C46429}.Release|x64.ActiveCfg = Release|x64
+		{8B88AFEE-AE90-4DEA-BA4D-656EA7E6F74D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B88AFEE-AE90-4DEA-BA4D-656EA7E6F74D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B88AFEE-AE90-4DEA-BA4D-656EA7E6F74D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8B88AFEE-AE90-4DEA-BA4D-656EA7E6F74D}.Debug|x64.Build.0 = Debug|Any CPU
+		{8B88AFEE-AE90-4DEA-BA4D-656EA7E6F74D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B88AFEE-AE90-4DEA-BA4D-656EA7E6F74D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B88AFEE-AE90-4DEA-BA4D-656EA7E6F74D}.Release|x64.ActiveCfg = Release|Any CPU
+		{8B88AFEE-AE90-4DEA-BA4D-656EA7E6F74D}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

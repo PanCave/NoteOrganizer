@@ -30,7 +30,7 @@
           <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
               <ColumnDefinition />
-              <ColumnDefinition Width="80" />
+              <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <TextBlock Text="{Binding TodoText}" TextWrapping="WrapWithOverflow" Margin="10 0 0 5" Foreground="White" />
             <TextBlock Text="{Binding DueDate, Converter={StaticResource DateTimeToDueDateConverter}}" HorizontalAlignment="Right" Grid.Column="1" Margin="0 0 10 0" Foreground="White" />
@@ -40,7 +40,7 @@
       <DataTemplate x:Key="SeparatorTemplate" DataType="{x:Type vm:TodoListSeparatorViewModel}">
         <Grid>
           <Separator />
-          <Label Content="{Binding Title}" Background="White" Width="60" HorizontalContentAlignment="Center" />
+          <Label Content="{Binding Title}" Foreground="White" Background="#141416" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Padding="20 5" />
         </Grid>
       </DataTemplate>
       <templateSelector:TodoListViewTemplateSelector x:Key="TodoListViewTemplateSelector"
@@ -48,8 +48,5 @@
                                                      SeparatorTemplate="{StaticResource SeparatorTemplate}" />
     </ResourceDictionary>
   </UserControl.Resources>
-  <ItemsControl ItemsSource="{Binding TodoListElements}" ItemTemplateSelector="{StaticResource TodoListViewTemplateSelector}">
-    <ItemsControl.Resources>
-    </ItemsControl.Resources>
-  </ItemsControl>
+  <ItemsControl ItemsSource="{Binding TodoListElements}" ItemTemplateSelector="{StaticResource TodoListViewTemplateSelector}" />
 </UserControl>

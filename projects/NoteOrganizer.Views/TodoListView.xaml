@@ -32,7 +32,7 @@
               <ColumnDefinition />
               <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TextBlock Text="{Binding TodoText}" TextWrapping="WrapWithOverflow" Margin="10 0 0 5" Foreground="White" />
+            <TextBlock Text="{Binding TodoText}" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" Margin="10 0 0 5" Foreground="White" />
             <TextBlock Text="{Binding DueDate, Converter={StaticResource DateTimeToDueDateConverter}}" HorizontalAlignment="Right" Grid.Column="1" Margin="0 0 10 0" Foreground="White" />
           </Grid>
         </Grid>
@@ -48,5 +48,5 @@
                                                      SeparatorTemplate="{StaticResource SeparatorTemplate}" />
     </ResourceDictionary>
   </UserControl.Resources>
-  <ItemsControl ItemsSource="{Binding TodoListElements}" ItemTemplateSelector="{StaticResource TodoListViewTemplateSelector}" />
+  <ItemsControl ItemsSource="{Binding TodoListElements}" ItemTemplateSelector="{StaticResource TodoListViewTemplateSelector}" MinWidth="250" />
 </UserControl>

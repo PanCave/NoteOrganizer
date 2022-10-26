@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NoteOrganizer.BL\NoteOrganizer.BL.csproj" />
+    <ProjectReference Include="..\NoteOrganizer.Resources\NoteOrganizer.Resources.csproj" />
   </ItemGroup>
 
   <ItemGroup>

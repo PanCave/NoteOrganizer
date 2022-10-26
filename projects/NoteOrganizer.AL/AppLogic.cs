@@ -65,23 +65,14 @@ namespace NoteOrganizer.AL
       agenda.AddTodo(new Todo("Energieberater", "Sprintplanungstermin teilen", today, new TimeOnly(16, 0, 0), DateTime.Today));
       agenda.AddTodo(new Todo("TÜV", "Termin nachfragen", today.AddDays(1), new TimeOnly(16, 0, 0), DateTime.Today));
       agenda.AddTodo(new Todo("Winterreifen", "Termin festmachen", today.AddDays(1), new TimeOnly(16, 0, 0), DateTime.Today));
+      agenda.AddTodo(new Todo("HNO", "Termin festmachen", today.AddDays(3), new TimeOnly(16, 0, 0), DateTime.Today));
+      agenda.AddTodo(new Todo("Bett abholen", "Bett aus Köln-Süd abholen", today.AddDays(16), new TimeOnly(16, 0, 0), DateTime.Today));
 
       ITodoToTodoViewModelConverter todoToTodoViewModelConverter = new TodoToTodoViewModelConverter();
+      IDateOnlyToToTimeCategoryConverter dateOnlyToToTimeCategoryConverter = new DateOnlyToTimeCategoryConverter();
+      ITodoListItemViewModelWrapper todoListItemViewModelWrapper = new TodoListItemViewModelWrapper(agenda, todoToTodoViewModelConverter, dateOnlyToToTimeCategoryConverter);
 
-      ITodoViewModel todo1ViewModel = todoToTodoViewModelConverter.Convert(todo1);
-      ITodoViewModel todo2ViewModel = todoToTodoViewModelConverter.Convert(todo2);
-      ITodoViewModel todo3ViewModel = todoToTodoViewModelConverter.Convert(todo3);
-      ITodoViewModel todo4ViewModel = todoToTodoViewModelConverter.Convert(todo4);
-      ITodoListItemViewModel seperatorTomorrow = new TodoListSeparatorViewModel(ResourceStrings_de.Tomorrow);
-
-      List<ITodoListItemViewModel> todoListItemViewModels = new List<ITodoListItemViewModel>();
-      todoListItemViewModels.Add(todo1ViewModel);
-      todoListItemViewModels.Add(todo2ViewModel);
-      todoListItemViewModels.Add(seperatorTomorrow);
-      todoListItemViewModels.Add(todo3ViewModel);
-      todoListItemViewModels.Add(todo4ViewModel);
-
-      ITodoListViewModel todoListViewModel = new TodoListViewModel(todoListItemViewModels);
+      ITodoListViewModel todoListViewModel = new TodoListViewModel(todoListItemViewModelWrapper.TodoListItemViewModels);
 
       MainViewModel = new MainViewModel(todoListViewModel, schedulerWeekViewModel);
     }

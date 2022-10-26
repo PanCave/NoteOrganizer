@@ -12,6 +12,8 @@ namespace NoteOrganizer.ViewModels.Converter
       int weekDifference = GetIso8601WeekOfYear(date.ToDateTime(TimeOnly.MinValue)) - GetIso8601WeekOfYear(DateTime.Now);
       int monthDifference = date.Month - DateTime.Now.Month;
       int yearDifference = date.Year - DateTime.Now.Year;
+      if (dayDifference < 0)
+        return TimeCategory.Overdue;
       if (dayDifference == 0)
         return TimeCategory.Today;
       if (dayDifference == 1)

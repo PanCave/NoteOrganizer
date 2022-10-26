@@ -138,6 +138,9 @@
   <data name="NextYear" xml:space="preserve">
     <value>Nächstes Jahr</value>
   </data>
+  <data name="Overdue" xml:space="preserve">
+    <value>Überfällig</value>
+  </data>
   <data name="ThisMonth" xml:space="preserve">
     <value>Diesen Monat</value>
   </data>

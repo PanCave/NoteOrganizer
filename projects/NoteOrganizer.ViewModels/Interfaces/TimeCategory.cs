@@ -2,6 +2,7 @@
 {
   public enum TimeCategory
   {
+    Overdue,
     Today,
     Tomorrow,
     ThisWeek,

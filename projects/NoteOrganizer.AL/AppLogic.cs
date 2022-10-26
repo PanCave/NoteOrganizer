@@ -63,9 +63,10 @@ namespace NoteOrganizer.AL
       IAgenda agenda = new Agenda();
       agenda.AddTodo(new Todo("HottCAD", "Termine anlegen", today, new TimeOnly(16, 0, 0), DateTime.Today));
       agenda.AddTodo(new Todo("Energieberater", "Sprintplanungstermin teilen", today, new TimeOnly(16, 0, 0), DateTime.Today));
-      agenda.AddTodo(new Todo("TÜV", "Termin nachfragen", today.AddDays(1), new TimeOnly(16, 0, 0), DateTime.Today));
+      agenda.AddTodo(new Todo("TÜV", "Termin nachfragen", today.AddDays(-2), new TimeOnly(16, 0, 0), DateTime.Today));
       agenda.AddTodo(new Todo("Winterreifen", "Termin festmachen", today.AddDays(1), new TimeOnly(16, 0, 0), DateTime.Today));
       agenda.AddTodo(new Todo("HNO", "Termin festmachen", today.AddDays(3), new TimeOnly(16, 0, 0), DateTime.Today));
+      agenda.AddTodo(new Todo("Transporter holen", "Schlüssel bei Christine abholen", today.AddDays(15), new TimeOnly(16, 0, 0), DateTime.Today));
       agenda.AddTodo(new Todo("Bett abholen", "Bett aus Köln-Süd abholen", today.AddDays(16), new TimeOnly(16, 0, 0), DateTime.Today));
 
       ITodoToTodoViewModelConverter todoToTodoViewModelConverter = new TodoToTodoViewModelConverter();

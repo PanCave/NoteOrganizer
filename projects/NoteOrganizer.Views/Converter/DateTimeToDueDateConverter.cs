@@ -24,6 +24,9 @@ namespace NoteOrganizer.Views.Converter
         TimeCategory timeCategory = dateOnlyToTimeCategoryConverter.ConvertToTimeCategory(date);
         switch (timeCategory)
         {
+          case TimeCategory.Overdue:
+            return $"{ResourceStrings_de.Overdue}!";
+
           case TimeCategory.Today:
             return $"{ResourceStrings_de.Due}: {ResourceStrings_de.Today}";
 

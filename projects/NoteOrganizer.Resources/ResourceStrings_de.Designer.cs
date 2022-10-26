@@ -124,6 +124,15 @@ namespace NoteOrganizer.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Überfällig ähnelt.
+        /// </summary>
+        public static string Overdue {
+            get {
+                return ResourceManager.GetString("Overdue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Diesen Monat ähnelt.
         /// </summary>
         public static string ThisMonth {

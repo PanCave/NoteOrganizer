@@ -30,6 +30,8 @@ namespace NoteOrganizer.ViewModels.Wrapper
         return;
 
       TimeCategory previousTimeCategory = dateOnlyToToTimeCategoryConverter.ConvertToTimeCategory(agenda.Todos[0].DueDate);
+      if (previousTimeCategory == TimeCategory.Overdue)
+        TodoListItemViewModels.Add(new TodoListSeparatorViewModel(TimeCategory.Overdue));
       foreach (ITodo todo in agenda.Todos)
       {
         TimeCategory currentTimeCategory = dateOnlyToToTimeCategoryConverter.ConvertToTimeCategory(todo.DueDate);

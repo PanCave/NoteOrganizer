@@ -92,6 +92,8 @@ namespace NoteOrganizer.ViewModels.Tests
       meeting4ViewModel.BackgroundColor.Should().BeDefined();
       meeting4ViewModel.BorderColor.Should().BeDefined();
       meeting4ViewModel.MouseOverBackgroundColor.Should().BeDefined();
+
+      mockRepository.VerifyAll();
     }
 
     [Test]
@@ -136,6 +138,8 @@ namespace NoteOrganizer.ViewModels.Tests
       meeting2ViewModel.BackgroundColor.Should().BeDefined();
       meeting2ViewModel.BorderColor.Should().BeDefined();
       meeting2ViewModel.MouseOverBackgroundColor.Should().BeDefined();
+
+      mockRepository.VerifyAll();
     }
 
     [Test]
@@ -216,6 +220,8 @@ namespace NoteOrganizer.ViewModels.Tests
       meeting4ViewModel.BackgroundColor.Should().BeDefined();
       meeting4ViewModel.BorderColor.Should().BeDefined();
       meeting4ViewModel.MouseOverBackgroundColor.Should().BeDefined();
+
+      mockRepository.VerifyAll();
     }
   }
 }

@@ -4,14 +4,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:view="clr-namespace:NoteOrganizer.Views"
-             mc:Ignorable="d"
+             mc:Ignorable="d"             
              d:DesignHeight="1450" d:DesignWidth="1000">
   <Grid>
     <Grid.RowDefinitions>
+      <RowDefinition Height="50" />
       <RowDefinition Height="75" />
       <RowDefinition />
     </Grid.RowDefinitions>
-    <Grid>
+    <TextBlock Text="Kalendar und Notizen" FontWeight="Bold" FontSize="24" Foreground="White"/>
+    <Grid Grid.Row="1" Background="#141414">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="30" />
         <ColumnDefinition />
@@ -26,7 +28,7 @@
       <view:SchedulerDayHeaderView Grid.Column="4" DataContext="{Binding ThursdayHeaderViewModel}" />
       <view:SchedulerDayHeaderView Grid.Column="5" DataContext="{Binding FridayHeaderViewModel}" />
     </Grid>
-    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" x:Name="ScrollView" CanContentScroll="True">
+    <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Hidden" x:Name="ScrollView" CanContentScroll="True">
       <Grid>
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="30" />

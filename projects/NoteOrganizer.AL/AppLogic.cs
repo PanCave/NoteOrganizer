@@ -75,7 +75,9 @@ namespace NoteOrganizer.AL
 
       ITodoListViewModel todoListViewModel = new TodoListViewModel(todoListItemViewModelWrapper.TodoListItemViewModels);
 
-      MainViewModel = new MainViewModel(todoListViewModel, schedulerWeekViewModel);
+      ICombinedViewModel combinedViewModel = new CombinedViewModel(todoListViewModel, schedulerWeekViewModel);
+
+      MainViewModel = new MainViewModel(combinedViewModel);
     }
 
     public IMainViewModel MainViewModel { get; }

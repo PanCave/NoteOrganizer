@@ -40,7 +40,7 @@
       <DataTemplate x:Key="SeparatorTemplate" DataType="{x:Type vm:TodoListSeparatorViewModel}">
         <Grid>
           <Separator />
-          <Label Content="{Binding Title}" Foreground="White" Background="#141416" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Padding="20 5" />
+          <Label Content="{Binding Title}" Foreground="White" Background="#1f1f1f" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Padding="20 5" />
         </Grid>
       </DataTemplate>
       <templateSelector:TodoListViewTemplateSelector x:Key="TodoListViewTemplateSelector"
@@ -48,5 +48,14 @@
                                                      SeparatorTemplate="{StaticResource SeparatorTemplate}" />
     </ResourceDictionary>
   </UserControl.Resources>
-  <ItemsControl ItemsSource="{Binding TodoListElements}" ItemTemplateSelector="{StaticResource TodoListViewTemplateSelector}" MinWidth="250" />
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="50"/>
+      <RowDefinition/>
+    </Grid.RowDefinitions>
+    <TextBlock Text="Todos" Foreground="White" FontWeight="Bold"  FontSize="24" HorizontalAlignment="Center"/>
+    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" CanContentScroll="True" Background="#1f1f1f" Padding="10">
+      <ItemsControl ItemsSource="{Binding TodoListElements}" ItemTemplateSelector="{StaticResource TodoListViewTemplateSelector}" MinWidth="250" />
+    </ScrollViewer>
+  </Grid>
 </UserControl>

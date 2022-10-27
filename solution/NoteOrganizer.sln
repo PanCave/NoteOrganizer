@@ -19,8 +19,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoteOrganizer.Persistence.I
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoteOrganizer.ViewModels.Tests", "..\nunit\NoteOrganizer.ViewModels.Tests\NoteOrganizer.ViewModels.Tests.csproj", "{7CB89498-6B64-488E-89A5-F7E1C9C46429}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoteOrganizer.Views.Tests", "..\projects\NoteOrganizer.Views.Tests\NoteOrganizer.Views.Tests.csproj", "{5B775F8F-4397-4F48-B753-7556C828319C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoteOrganizer.Resources", "..\projects\NoteOrganizer.Resources\NoteOrganizer.Resources.csproj", "{8B88AFEE-AE90-4DEA-BA4D-656EA7E6F74D}"
 EndProject
 Global
@@ -55,9 +53,6 @@ Global
 		{7CB89498-6B64-488E-89A5-F7E1C9C46429}.Debug|x64.ActiveCfg = Debug|x64
 		{7CB89498-6B64-488E-89A5-F7E1C9C46429}.Debug|x64.Build.0 = Debug|x64
 		{7CB89498-6B64-488E-89A5-F7E1C9C46429}.Release|x64.ActiveCfg = Release|x64
-		{5B775F8F-4397-4F48-B753-7556C828319C}.Debug|x64.ActiveCfg = Debug|x64
-		{5B775F8F-4397-4F48-B753-7556C828319C}.Debug|x64.Build.0 = Debug|x64
-		{5B775F8F-4397-4F48-B753-7556C828319C}.Release|x64.ActiveCfg = Release|x64
 		{8B88AFEE-AE90-4DEA-BA4D-656EA7E6F74D}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{8B88AFEE-AE90-4DEA-BA4D-656EA7E6F74D}.Debug|x64.Build.0 = Debug|Any CPU
 		{8B88AFEE-AE90-4DEA-BA4D-656EA7E6F74D}.Release|x64.ActiveCfg = Release|Any CPU

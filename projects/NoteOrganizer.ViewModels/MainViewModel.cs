@@ -4,13 +4,11 @@ namespace NoteOrganizer.ViewModels
 {
   public class MainViewModel : IMainViewModel
   {
-    public MainViewModel(ITodoListViewModel todoListViewModel, ISchedulerWeekViewModel schedulerWeekViewModel)
+    public MainViewModel(ICombinedViewModel combinedViewModel)
     {
-      TodoListViewModel = todoListViewModel;
-      SchedulerWeekViewModel = schedulerWeekViewModel;
+      CombinedViewModel = combinedViewModel;
     }
 
-    public ISchedulerWeekViewModel SchedulerWeekViewModel { get; }
-    public ITodoListViewModel TodoListViewModel { get; }
+    public ICombinedViewModel CombinedViewModel { get; }
   }
 }

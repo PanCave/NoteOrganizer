@@ -8,8 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\plus_light.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\NoteOrganizer.Resources\NoteOrganizer.Resources.csproj" />
     <ProjectReference Include="..\NoteOrganizer.ViewModels\NoteOrganizer.ViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\plus_light.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

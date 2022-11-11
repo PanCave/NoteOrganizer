@@ -10,8 +10,8 @@ namespace NoteOrganizer.ViewModels.Wrapper
   public class TodoListItemViewModelWrapper : ITodoListItemViewModelWrapper
   {
     private readonly IAgenda agenda;
-    private readonly ITodoToTodoViewModelConverter todoToTodoViewModelConverter;
     private readonly IDateOnlyToToTimeCategoryConverter dateOnlyToToTimeCategoryConverter;
+    private readonly ITodoToTodoViewModelConverter todoToTodoViewModelConverter;
 
     public TodoListItemViewModelWrapper(IAgenda agenda, ITodoToTodoViewModelConverter todoToTodoViewModelConverter, IDateOnlyToToTimeCategoryConverter dateOnlyToToTimeCategoryConverter)
     {
@@ -21,8 +21,6 @@ namespace NoteOrganizer.ViewModels.Wrapper
       TodoListItemViewModels = new List<ITodoListItemViewModel>();
       CreateViewModelsFromTodosCollection();
     }
-
-    public List<ITodoListItemViewModel> TodoListItemViewModels { get; }
 
     private void CreateViewModelsFromTodosCollection()
     {
@@ -44,9 +42,6 @@ namespace NoteOrganizer.ViewModels.Wrapper
       }
     }
 
-    private TimeCategory GetTimeCategory(ITodo todo)
-    {
-      return TimeCategory.Later;
-    }
+    public List<ITodoListItemViewModel> TodoListItemViewModels { get; }
   }
 }

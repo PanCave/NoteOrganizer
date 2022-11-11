@@ -36,11 +36,11 @@ namespace NoteOrganizer.AL
       IMeetingViewModelWrapper thursdayMeetingViewModelWrapper = new MeetingViewModelWrapper(calendar[today.AddDays(1 - (int)dayOfWeek + 3)], meetingToMeetingViewModelConverter);
       IMeetingViewModelWrapper fridayMeetingViewModelWrapper = new MeetingViewModelWrapper(calendar[today.AddDays(1 - (int)dayOfWeek + 4)], meetingToMeetingViewModelConverter);
 
-      ISchedulerDayHeaderViewModel mondayHeaderViewModel = new SchedulerDayHeaderViewModel("10", ResourceStrings_de.Monday);
-      ISchedulerDayHeaderViewModel tuesdayHeaderViewModel = new SchedulerDayHeaderViewModel("11", ResourceStrings_de.Tuesday);
-      ISchedulerDayHeaderViewModel wednesdayHeaderViewModel = new SchedulerDayHeaderViewModel("12", ResourceStrings_de.Wednesday);
-      ISchedulerDayHeaderViewModel thursdayHeaderViewModel = new SchedulerDayHeaderViewModel("13", ResourceStrings_de.Thursday);
-      ISchedulerDayHeaderViewModel fridayHeaderViewModel = new SchedulerDayHeaderViewModel("14", ResourceStrings_de.Friday);
+      ISchedulerDayHeaderViewModel mondayHeaderViewModel = new SchedulerDayHeaderViewModel(calendar[today.AddDays(1 - (int)dayOfWeek)].Date.Day.ToString(), ResourceStrings_de.Monday);
+      ISchedulerDayHeaderViewModel tuesdayHeaderViewModel = new SchedulerDayHeaderViewModel(calendar[today.AddDays(1 - (int)dayOfWeek + 1)].Date.Day.ToString(), ResourceStrings_de.Tuesday);
+      ISchedulerDayHeaderViewModel wednesdayHeaderViewModel = new SchedulerDayHeaderViewModel(calendar[today.AddDays(1 - (int)dayOfWeek + 2)].Date.Day.ToString(), ResourceStrings_de.Wednesday);
+      ISchedulerDayHeaderViewModel thursdayHeaderViewModel = new SchedulerDayHeaderViewModel(calendar[today.AddDays(1 - (int)dayOfWeek + 3)].Date.Day.ToString(), ResourceStrings_de.Thursday);
+      ISchedulerDayHeaderViewModel fridayHeaderViewModel = new SchedulerDayHeaderViewModel(calendar[today.AddDays(1 - (int)dayOfWeek + 4)].Date.Day.ToString(), ResourceStrings_de.Friday);
 
       ISchedulerDayViewModel mondayViewModel = new SchedulerDayViewModel(mondayMeetingViewModelWrapper);
       ISchedulerDayViewModel tuesdayViewModel = new SchedulerDayViewModel(tuesdayMeetingViewModelWrapper);

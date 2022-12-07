@@ -6,6 +6,7 @@
         xmlns:views="clr-namespace:NoteOrganizer.Views;assembly=NoteOrganizer.Views"
         mc:Ignorable="d"
         Background="#0a0a0a"
+        WindowState="Maximized"
         Title="MainWindow" Height="1080" Width="1920">
   <Grid>
     <!--<views:SchedulerWeekView DataContext="{Binding SchedulerWeekViewModel}" />-->

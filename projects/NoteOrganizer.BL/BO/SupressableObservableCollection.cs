@@ -16,6 +16,21 @@ namespace NoteOrganizer.BL.BO
     {
     }
 
+    public void TriggerCollectionChanged()
+    {
+      this.OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+    }
+
+    protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
+    {
+      if (SupressNotification)
+      {
+        _notificationSupressed = true;
+        return;
+      }
+      base.OnCollectionChanged(e);
+    }
+
     public bool SupressNotification
     {
       get
@@ -31,16 +46,6 @@ namespace NoteOrganizer.BL.BO
           _notificationSupressed = false;
         }
       }
-    }
-
-    protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
-    {
-      if (SupressNotification)
-      {
-        _notificationSupressed = true;
-        return;
-      }
-      base.OnCollectionChanged(e);
     }
   }
 }

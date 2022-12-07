@@ -33,6 +33,9 @@ namespace NoteOrganizer.Views.Converter
           case TimeCategory.Tomorrow:
             return $"{ResourceStrings_de.Due}: {ResourceStrings_de.Tomorrow}";
 
+          case TimeCategory.TheDayAfterTomorrow:
+            return $"{ResourceStrings_de.Due}: {ResourceStrings_de.TheDayAfterTomorrow}";
+
           case TimeCategory.ThisWeek:
             return $"{ResourceStrings_de.Due}: {ResourceStrings_de.ThisWeek}";
 

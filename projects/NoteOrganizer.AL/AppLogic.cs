@@ -1,23 +1,32 @@
 ﻿using NoteOrganizer.BL;
-using NoteOrganizer.BL.BO;
 using NoteOrganizer.BL.Interfaces;
 using NoteOrganizer.Persistence.Interfaces;
 using NoteOrganizer.Persistence.Outlook;
 using NoteOrganizer.Persistence.Outlook.Interfaces;
 using NoteOrganizer.Resources;
 using NoteOrganizer.ViewModels;
+using NoteOrganizer.ViewModels.Commands;
 using NoteOrganizer.ViewModels.Converter;
 using NoteOrganizer.ViewModels.Converter.Interfaces;
 using NoteOrganizer.ViewModels.Interfaces;
 using NoteOrganizer.ViewModels.Wrapper;
 using NoteOrganizer.ViewModels.Wrapper.Interfaces;
+using NoteOrganizer.Views;
+using System.Windows;
+using System.Windows.Input;
 
 namespace NoteOrganizer.AL
 {
   public class AppLogic
   {
+    private readonly List<TimeOnly> dueTimes;
+    private Window? createTodoWindow;
+
     public AppLogic()
     {
+      dueTimes = new List<TimeOnly>();
+      FillDueTimesList();
+
       ICalendar calendar = new Calendar();
 
       DateOnly today = DateOnly.FromDateTime(DateTime.Now);
@@ -61,23 +70,45 @@ namespace NoteOrganizer.AL
         fridayViewModel);
 
       IAgenda agenda = new Agenda();
-      agenda.AddTodo(new Todo("HottCAD", "Termine anlegen", today, new TimeOnly(16, 0, 0), DateTime.Today));
-      agenda.AddTodo(new Todo("Energieberater", "Sprintplanungstermin teilen", today, new TimeOnly(16, 0, 0), DateTime.Today));
-      agenda.AddTodo(new Todo("TÜV", "Termin nachfragen", today.AddDays(-2), new TimeOnly(16, 0, 0), DateTime.Today));
-      agenda.AddTodo(new Todo("Winterreifen", "Termin festmachen", today.AddDays(1), new TimeOnly(16, 0, 0), DateTime.Today));
-      agenda.AddTodo(new Todo("HNO", "Termin festmachen", today.AddDays(3), new TimeOnly(16, 0, 0), DateTime.Today));
-      agenda.AddTodo(new Todo("Transporter holen", "Schlüssel bei Christine abholen", today.AddDays(15), new TimeOnly(16, 0, 0), DateTime.Today));
-      agenda.AddTodo(new Todo("Bett abholen", "Bett aus Köln-Süd abholen", today.AddDays(16), new TimeOnly(16, 0, 0), DateTime.Today));
+
+      ITodoWrapper todoWrapper = new TodoWrapper();
+
+      ICommand saveTodoCommand = new SaveTodoCommand(todoWrapper, agenda, () => createTodoWindow?.Close());
+      ICommand openCreateTodoWindowCommand = new OpenCreateTodoWindowCommand(() => OpenCreateTodoWindow(todoWrapper, saveTodoCommand));
 
       ITodoToTodoViewModelConverter todoToTodoViewModelConverter = new TodoToTodoViewModelConverter();
       IDateOnlyToToTimeCategoryConverter dateOnlyToToTimeCategoryConverter = new DateOnlyToTimeCategoryConverter();
       ITodoListItemViewModelWrapper todoListItemViewModelWrapper = new TodoListItemViewModelWrapper(agenda, todoToTodoViewModelConverter, dateOnlyToToTimeCategoryConverter);
 
-      ITodoListViewModel todoListViewModel = new TodoListViewModel(todoListItemViewModelWrapper.TodoListItemViewModels);
+      ITodoListViewModel todoListViewModel = new TodoListViewModel(todoListItemViewModelWrapper);
 
-      ICombinedViewModel combinedViewModel = new CombinedViewModel(todoListViewModel, schedulerWeekViewModel);
+      IToolbarViewModel toolbarViewModel = new ToolbarViewModel(openCreateTodoWindowCommand);
+
+      ICombinedViewModel combinedViewModel = new CombinedViewModel(toolbarViewModel, todoListViewModel, schedulerWeekViewModel);
 
       MainViewModel = new MainViewModel(combinedViewModel);
+    }
+
+    private void FillDueTimesList()
+    {
+      for (int i = 6; i < 19; i++)
+      {
+        dueTimes.Add(new TimeOnly(i, 0, 0));
+      }
+    }
+
+    private void OpenCreateTodoWindow(ITodoWrapper todoWrapper, ICommand saveTodoCommand)
+    {
+      createTodoWindow = new Window();
+
+      createTodoWindow.Height = 450;
+      createTodoWindow.Width = 800;
+      createTodoWindow.Title = ResourceStrings_de.CreateNewTodo;
+      createTodoWindow.ResizeMode = ResizeMode.CanMinimize;
+
+      createTodoWindow.DataContext = new CreateTodoViewModel(todoWrapper, dueTimes, saveTodoCommand);
+      createTodoWindow.Content = new CreateTodoView();
+      createTodoWindow.Show();
     }
 
     public IMainViewModel MainViewModel { get; }

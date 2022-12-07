@@ -32,7 +32,7 @@
               <ColumnDefinition />
               <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TextBlock Text="{Binding TodoText}" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" Margin="10 0 0 5" Foreground="White" />
+            <TextBlock Text="{Binding TodoDescription}" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" Margin="10 0 0 5" Foreground="White" />
             <TextBlock Text="{Binding DueDate, Converter={StaticResource DateTimeToDueDateConverter}}" HorizontalAlignment="Right" Grid.Column="1" Margin="0 0 10 0" Foreground="White" />
           </Grid>
         </Grid>
@@ -50,10 +50,10 @@
   </UserControl.Resources>
   <Grid>
     <Grid.RowDefinitions>
-      <RowDefinition Height="50"/>
-      <RowDefinition/>
+      <RowDefinition Height="50" />
+      <RowDefinition />
     </Grid.RowDefinitions>
-    <TextBlock Text="Todos" Foreground="White" FontWeight="Bold"  FontSize="24" HorizontalAlignment="Center"/>
+    <TextBlock Text="Todos" Foreground="White" FontWeight="Bold"  FontSize="24" HorizontalAlignment="Center" />
     <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" CanContentScroll="True" Background="#1f1f1f" Padding="10">
       <ItemsControl ItemsSource="{Binding TodoListElements}" ItemTemplateSelector="{StaticResource TodoListViewTemplateSelector}" MinWidth="250" />
     </ScrollViewer>

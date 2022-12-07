@@ -61,6 +61,24 @@ namespace NoteOrganizer.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Kalendar und Notizen ähnelt.
+        /// </summary>
+        public static string CalendarAndNotes {
+            get {
+                return ResourceManager.GetString("CalendarAndNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Neues Todo anlegen ähnelt.
+        /// </summary>
+        public static string CreateNewTodo {
+            get {
+                return ResourceManager.GetString("CreateNewTodo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Bis ähnelt.
         /// </summary>
         public static string Due {
@@ -93,6 +111,15 @@ namespace NoteOrganizer.Resources {
         public static string Monday {
             get {
                 return ResourceManager.GetString("Monday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Neues Todo ähnelt.
+        /// </summary>
+        public static string NewTodo {
+            get {
+                return ResourceManager.GetString("NewTodo", resourceCulture);
             }
         }
         
@@ -133,6 +160,15 @@ namespace NoteOrganizer.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Übermorgen ähnelt.
+        /// </summary>
+        public static string TheDayAfterTomorrow {
+            get {
+                return ResourceManager.GetString("TheDayAfterTomorrow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Diesen Monat ähnelt.
         /// </summary>
         public static string ThisMonth {
@@ -169,11 +205,29 @@ namespace NoteOrganizer.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Titel ähnelt.
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Heute ähnelt.
         /// </summary>
         public static string Today {
             get {
                 return ResourceManager.GetString("Today", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Todos ähnelt.
+        /// </summary>
+        public static string Todos {
+            get {
+                return ResourceManager.GetString("Todos", resourceCulture);
             }
         }
         

@@ -1,7 +1,9 @@
-﻿namespace NoteOrganizer.ViewModels.Interfaces
+﻿using NoteOrganizer.BL.BO;
+
+namespace NoteOrganizer.ViewModels.Interfaces
 {
   public interface ITodoListViewModel
   {
-    List<ITodoListItemViewModel> TodoListElements { get; }
+    SupressableObservableCollection<ITodoListItemViewModel> TodoListElements { get; }
   }
 }

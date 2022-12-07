@@ -1,9 +1,11 @@
-﻿using NoteOrganizer.ViewModels.Interfaces;
+﻿using NoteOrganizer.BL.BO;
+using NoteOrganizer.ViewModels.Interfaces;
+using System.ComponentModel;
 
 namespace NoteOrganizer.ViewModels.Wrapper.Interfaces
 {
-  public interface ITodoListItemViewModelWrapper
+  public interface ITodoListItemViewModelWrapper : INotifyPropertyChanged
   {
-    List<ITodoListItemViewModel> TodoListItemViewModels { get; }
+    SupressableObservableCollection<ITodoListItemViewModel> TodoListItemViewModels { get; }
   }
 }

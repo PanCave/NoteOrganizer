@@ -1,16 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Platforms>x64</Platforms>
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\NoteOrganizer.Persistence.Outlook\NoteOrganizer.Persistence.Outlook.csproj" />
     <ProjectReference Include="..\NoteOrganizer.Resources\NoteOrganizer.Resources.csproj" />
     <ProjectReference Include="..\NoteOrganizer.ViewModels\NoteOrganizer.ViewModels.csproj" />
+    <ProjectReference Include="..\NoteOrganizer.Views\NoteOrganizer.Views.csproj" />
   </ItemGroup>
 
 </Project>

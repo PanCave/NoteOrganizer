@@ -1,9 +1,11 @@
-﻿using NoteOrganizer.BL.BO.Interfaces;
+﻿using NoteOrganizer.BL.BO;
+using NoteOrganizer.BL.BO.Interfaces;
 using NoteOrganizer.BL.Interfaces;
 using NoteOrganizer.ViewModels.Converter;
 using NoteOrganizer.ViewModels.Converter.Interfaces;
 using NoteOrganizer.ViewModels.Interfaces;
 using NoteOrganizer.ViewModels.Wrapper.Interfaces;
+using System.ComponentModel;
 
 namespace NoteOrganizer.ViewModels.Wrapper
 {
@@ -16,14 +18,25 @@ namespace NoteOrganizer.ViewModels.Wrapper
     public TodoListItemViewModelWrapper(IAgenda agenda, ITodoToTodoViewModelConverter todoToTodoViewModelConverter, IDateOnlyToToTimeCategoryConverter dateOnlyToToTimeCategoryConverter)
     {
       this.agenda = agenda;
+      agenda.PropertyChanged += Agenda_PropertyChanged;
       this.todoToTodoViewModelConverter = todoToTodoViewModelConverter;
       this.dateOnlyToToTimeCategoryConverter = dateOnlyToToTimeCategoryConverter;
-      TodoListItemViewModels = new List<ITodoListItemViewModel>();
+      TodoListItemViewModels = new SupressableObservableCollection<ITodoListItemViewModel>();
+      CreateViewModelsFromTodosCollection();
+    }
+
+    private void Agenda_PropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+      if (e.PropertyName == null || !e.PropertyName.Equals(nameof(IAgenda.Todos)))
+        return;
+
       CreateViewModelsFromTodosCollection();
     }
 
     private void CreateViewModelsFromTodosCollection()
     {
+      TodoListItemViewModels.Clear();
+
       if (agenda.Todos.Length == 0)
         return;
 
@@ -40,8 +53,13 @@ namespace NoteOrganizer.ViewModels.Wrapper
 
         previousTimeCategory = currentTimeCategory;
       }
+
+      TodoListItemViewModels.TriggerCollectionChanged();
+      PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TodoListItemViewModels)));
     }
 
-    public List<ITodoListItemViewModel> TodoListItemViewModels { get; }
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    public SupressableObservableCollection<ITodoListItemViewModel> TodoListItemViewModels { get; }
   }
 }

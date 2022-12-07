@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              d:DesignHeight="70" d:DesignWidth="800">
   <StackPanel Orientation="Horizontal">
-    <Button Background="#1f1f1f">
+    <Button Background="#1f1f1f" Command="{Binding OpenCreateTodoWindowCommand}">
       <Grid>
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="30" />

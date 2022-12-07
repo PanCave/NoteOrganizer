@@ -18,6 +18,8 @@ namespace NoteOrganizer.ViewModels.Converter
         return TimeCategory.Today;
       if (dayDifference == 1)
         return TimeCategory.Tomorrow;
+      if (dayDifference == 2)
+        return TimeCategory.TheDayAfterTomorrow;
       if (weekDifference == 0)
         return TimeCategory.ThisWeek;
       if (weekDifference == 1)

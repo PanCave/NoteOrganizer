@@ -4,5 +4,6 @@
   {
     ISchedulerWeekViewModel SchedulerWeekViewModel { get; }
     ITodoListViewModel TodoListViewModel { get; }
+    IToolbarViewModel ToolbarViewModel { get; }
   }
 }

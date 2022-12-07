@@ -1,14 +1,30 @@
-﻿using NoteOrganizer.ViewModels.Interfaces;
+﻿using NoteOrganizer.BL.BO;
+using NoteOrganizer.ViewModels.Interfaces;
+using NoteOrganizer.ViewModels.Wrapper.Interfaces;
+using System.ComponentModel;
 
 namespace NoteOrganizer.ViewModels
 {
-  public class TodoListViewModel : ITodoListViewModel
+  public class TodoListViewModel : ITodoListViewModel, INotifyPropertyChanged
   {
-    public TodoListViewModel(List<ITodoListItemViewModel> todoListElements)
+    private readonly ITodoListItemViewModelWrapper todoListItemViewModelWrapper;
+
+    public TodoListViewModel(ITodoListItemViewModelWrapper todoListItemViewModelWrapper)
     {
-      TodoListElements = todoListElements;
+      this.todoListItemViewModelWrapper = todoListItemViewModelWrapper;
+      todoListItemViewModelWrapper.PropertyChanged += TodoListItemViewModelWrapper_PropertyChanged;
     }
 
-    public List<ITodoListItemViewModel> TodoListElements { get; }
+    private void TodoListItemViewModelWrapper_PropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+      if (e.PropertyName == null || !e.PropertyName.Equals(nameof(ITodoListItemViewModelWrapper.TodoListItemViewModels)))
+        return;
+
+      PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TodoListElements)));
+    }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    public SupressableObservableCollection<ITodoListItemViewModel> TodoListElements => todoListItemViewModelWrapper.TodoListItemViewModels;
   }
 }

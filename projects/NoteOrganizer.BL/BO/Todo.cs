@@ -4,10 +4,19 @@ namespace NoteOrganizer.BL.BO
 {
   public class Todo : ITodo
   {
-    public Todo(string title, string todoText, DateOnly dueDate, TimeOnly dueTime, DateTime createdAt)
+    public Todo(string title, string todoDescription, DateOnly dueDate, DateTime createdAt)
     {
       Title = title;
-      TodoText = todoText;
+      TodoDescription = todoDescription;
+      DueDate = dueDate;
+      CreatedAt = createdAt;
+      IsFullDay = true;
+    }
+
+    public Todo(string title, string todoDescription, DateOnly dueDate, TimeOnly dueTime, DateTime createdAt)
+    {
+      Title = title;
+      TodoDescription = todoDescription;
       DueTime = dueTime;
       DueDate = dueDate;
       CreatedAt = createdAt;
@@ -16,7 +25,8 @@ namespace NoteOrganizer.BL.BO
     public DateTime CreatedAt { get; }
     public DateOnly DueDate { get; }
     public TimeOnly DueTime { get; }
+    public bool IsFullDay { get; }
     public string Title { get; }
-    public string TodoText { get; }
+    public string TodoDescription { get; }
   }
 }

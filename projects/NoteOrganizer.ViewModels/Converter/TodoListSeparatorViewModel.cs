@@ -10,8 +10,6 @@ namespace NoteOrganizer.ViewModels.Converter
       Title = CalculateTitleFromTimeCategory(timeCategory);
     }
 
-    public string Title { get; }
-
     private string CalculateTitleFromTimeCategory(TimeCategory timeCategory)
     {
       switch (timeCategory)
@@ -24,6 +22,9 @@ namespace NoteOrganizer.ViewModels.Converter
 
         case TimeCategory.Tomorrow:
           return ResourceStrings_de.Tomorrow;
+
+        case TimeCategory.TheDayAfterTomorrow:
+          return ResourceStrings_de.TheDayAfterTomorrow;
 
         case TimeCategory.ThisWeek:
           return ResourceStrings_de.ThisWeek;
@@ -48,5 +49,7 @@ namespace NoteOrganizer.ViewModels.Converter
           return ResourceStrings_de.Later;
       }
     }
+
+    public string Title { get; }
   }
 }

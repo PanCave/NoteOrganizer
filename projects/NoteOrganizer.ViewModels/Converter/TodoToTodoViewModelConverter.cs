@@ -21,7 +21,7 @@ namespace NoteOrganizer.ViewModels.Converter
 #pragma warning disable CS8605 // Unboxing eines möglichen NULL-Werts.
       return new TodoViewModel(
         todo.Title,
-        todo.TodoText,
+        todo.TodoDescription,
         todo.DueDate,
         todo.DueTime,
         todo.CreatedAt,

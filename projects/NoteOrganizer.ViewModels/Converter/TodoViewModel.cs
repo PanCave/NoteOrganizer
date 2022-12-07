@@ -5,10 +5,10 @@ namespace NoteOrganizer.ViewModels.Converter
 {
   public class TodoViewModel : ITodoViewModel
   {
-    public TodoViewModel(string title, string todoText, DateOnly dueDate, TimeOnly dueTime, DateTime createdAt, Color backgroundColor, Color mouseOverColor)
+    public TodoViewModel(string title, string todoDescription, DateOnly dueDate, TimeOnly dueTime, DateTime createdAt, Color backgroundColor, Color mouseOverColor)
     {
       Title = title;
-      TodoText = todoText;
+      TodoDescription = todoDescription;
       DueDate = dueDate;
       DueTime = dueTime;
       CreatedAt = createdAt;
@@ -22,6 +22,6 @@ namespace NoteOrganizer.ViewModels.Converter
     public TimeOnly DueTime { get; }
     public Color MouseOverBackgroundColor { get; }
     public string Title { get; }
-    public string TodoText { get; }
+    public string TodoDescription { get; }
   }
 }

@@ -5,7 +5,8 @@
     DateTime CreatedAt { get; }
     DateOnly DueDate { get; }
     TimeOnly DueTime { get; }
+    bool IsFullDay { get; }
     string Title { get; }
-    string TodoText { get; }
+    string TodoDescription { get; }
   }
 }

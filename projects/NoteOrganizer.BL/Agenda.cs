@@ -1,5 +1,6 @@
 ﻿using NoteOrganizer.BL.BO.Interfaces;
 using NoteOrganizer.BL.Interfaces;
+using System.ComponentModel;
 
 namespace NoteOrganizer.BL
 {
@@ -32,7 +33,10 @@ namespace NoteOrganizer.BL
       if (!inserted)
         todos.Add(newTodo);
       todoArray = this.todos.ToArray();
+      PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Todos)));
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
 
     public ITodo[] Todos => todoArray;
   }

@@ -9,6 +9,6 @@ namespace NoteOrganizer.ViewModels.Interfaces
     DateOnly DueDate { get; }
     TimeOnly DueTime { get; }
     Color MouseOverBackgroundColor { get; }
-    string TodoText { get; }
+    string TodoDescription { get; }
   }
 }
